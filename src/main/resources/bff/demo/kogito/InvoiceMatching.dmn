@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_69173C25-5572-4F0C-B9C0-83F5785C63AE" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_21F82326-E4C5-4733-8BA1-11F3E9344372" name="InvoiceMatching" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_69173C25-5572-4F0C-B9C0-83F5785C63AE">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_73CD7608-E0D6-4FD2-9D18-0B74E48B5C69" name="invoice" isCollection="false">
+    <dmn:itemComponent id="_A5F9B127-034F-4634-9A33-EB2459B242F2" name="progressivoFattura" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_152FBDC2-3897-4DC2-81E4-8B58C15EB478" name="dataEmissione" isCollection="false">
+      <dmn:typeRef>date</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_B1ED6942-979F-4A3D-BB58-72738F45EB4C" name="importo" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_53E172D5-BCB1-43A1-92A0-BA1841B79992" name="nome" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_C47DA172-49FC-4E37-9D47-88D1B4BB6185" name="cognome" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_2E454BC5-377C-4953-A264-BF8D961685D9" name="partitaIVA" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_4BFF702E-47DC-4CB8-AD36-CE2ECC5EAEE9" name="statoFattura" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_0D8B574C-68B0-4C02-B59F-811A64C9F5B5" name="transaction" isCollection="false">
+    <dmn:itemComponent id="_D6C53844-BDBE-40FD-B441-26F18169FB6D" name="ID" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_4B75F6F9-A417-4807-A4DB-AB091983F7F2" name="dataTransazione" isCollection="false">
+      <dmn:typeRef>date</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_58577D0C-52D8-4B5E-842D-4D2FA1B356DD" name="importo" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_A883C5ED-DCD3-41A5-8B77-B6FACDE42F74" name="nome" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_377DD087-D26D-4AD0-B689-1917A605BF98" name="cognome" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_62AB2A57-A3D0-4E49-A931-3A996D61F662" name="listTransaction" isCollection="true">
+    <dmn:typeRef>transaction</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_C45BEA49-A0E6-4A0A-B7E7-14C43B4AC5E9" name="listMatching" isCollection="true">
+    <dmn:typeRef>string</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_8CF22C19-C08A-4FF0-AD33-043E40D0A13E" name="Transazioni">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D243EC25-EA4E-4956-BF0C-2368FBF85A0D" name="Transazioni" typeRef="listTransaction"/>
+  </dmn:inputData>
+  <dmn:inputData id="_E0B17088-88B1-4FF4-BE83-2FE382F17DB6" name="Fattura">
+    <dmn:extensionElements/>
+    <dmn:variable id="_61D09EE8-8E2E-4B56-B446-B1498B5412A5" name="Fattura" typeRef="invoice"/>
+  </dmn:inputData>
+  <dmn:decision id="_68ECDA43-D4E1-4E0D-9B3C-5B3B901B8032" name="Matching">
+    <dmn:extensionElements/>
+    <dmn:variable id="_A27C3F63-84A2-4439-9333-B34A447F2A6F" name="Matching" typeRef="boolean"/>
+    <dmn:informationRequirement id="_13F46C30-DF60-4CAB-A162-D724C2C4CEE3">
+      <dmn:requiredInput href="#_8CF22C19-C08A-4FF0-AD33-043E40D0A13E"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5E7C88E7-3BD8-46C7-BA10-895363FB763D">
+      <dmn:requiredInput href="#_E0B17088-88B1-4FF4-BE83-2FE382F17DB6"/>
+    </dmn:informationRequirement>
+    <dmn:context id="_2B6C7EBB-FAD0-4D11-AAAD-5FAC99E5E0F9">
+      <dmn:contextEntry>
+        <dmn:variable id="_76A35100-B57D-4A4E-91E7-4EA7042346DE" name="matchTransactions" typeRef="listMatching"/>
+        <dmn:literalExpression id="_6509565E-A34D-421D-B38F-88390EDB158C">
+          <dmn:text>Transazioni [importo = Fattura.importo and nome = Fattura.nome and cognome = Fattura.cognome].ID</dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+      <dmn:contextEntry>
+        <dmn:literalExpression id="_C6ED535A-25EB-4174-96CD-145F238A4B54">
+          <dmn:text>count(matchTransactions) != 0 </dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+    </dmn:context>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_9D9FAC11-C6E2-46A5-A45B-9648EF4AA783" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_2B6C7EBB-FAD0-4D11-AAAD-5FAC99E5E0F9">
+            <kie:width>50</kie:width>
+            <kie:width>120</kie:width>
+            <kie:width>633</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_6509565E-A34D-421D-B38F-88390EDB158C">
+            <kie:width>633</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C6ED535A-25EB-4174-96CD-145F238A4B54">
+            <kie:width>633</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_8CF22C19-C08A-4FF0-AD33-043E40D0A13E" dmnElementRef="_8CF22C19-C08A-4FF0-AD33-043E40D0A13E" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="183" y="271" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_E0B17088-88B1-4FF4-BE83-2FE382F17DB6" dmnElementRef="_E0B17088-88B1-4FF4-BE83-2FE382F17DB6" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="358" y="271" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_68ECDA43-D4E1-4E0D-9B3C-5B3B901B8032" dmnElementRef="_68ECDA43-D4E1-4E0D-9B3C-5B3B901B8032" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="271" y="135" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_13F46C30-DF60-4CAB-A162-D724C2C4CEE3-AUTO-TARGET" dmnElementRef="_13F46C30-DF60-4CAB-A162-D724C2C4CEE3">
+        <di:waypoint x="233" y="296"/>
+        <di:waypoint x="321" y="185"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_5E7C88E7-3BD8-46C7-BA10-895363FB763D-AUTO-TARGET" dmnElementRef="_5E7C88E7-3BD8-46C7-BA10-895363FB763D">
+        <di:waypoint x="408" y="296"/>
+        <di:waypoint x="321" y="185"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
