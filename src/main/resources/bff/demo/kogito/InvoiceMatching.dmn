@@ -25,7 +25,7 @@
     </dmn:itemComponent>
   </dmn:itemDefinition>
   <dmn:itemDefinition id="_0D8B574C-68B0-4C02-B59F-811A64C9F5B5" name="transaction" isCollection="false">
-    <dmn:itemComponent id="_D6C53844-BDBE-40FD-B441-26F18169FB6D" name="ID" isCollection="false">
+    <dmn:itemComponent id="_D6C53844-BDBE-40FD-B441-26F18169FB6D" name="transactionId" isCollection="false">
       <dmn:typeRef>string</dmn:typeRef>
     </dmn:itemComponent>
     <dmn:itemComponent id="_4B75F6F9-A417-4807-A4DB-AB091983F7F2" name="dataTransazione" isCollection="false">
@@ -68,7 +68,7 @@
       <dmn:contextEntry>
         <dmn:variable id="_76A35100-B57D-4A4E-91E7-4EA7042346DE" name="matchTransactions" typeRef="listMatching"/>
         <dmn:literalExpression id="_6509565E-A34D-421D-B38F-88390EDB158C">
-          <dmn:text>Transazioni [importo = Fattura.importo and nome = Fattura.nome and cognome = Fattura.cognome].ID</dmn:text>
+          <dmn:text>Transazioni [importo = Fattura.importo and nome = Fattura.nome and cognome = Fattura.cognome].transactionId</dmn:text>
         </dmn:literalExpression>
       </dmn:contextEntry>
       <dmn:contextEntry>
@@ -85,13 +85,13 @@
           <kie:ComponentWidths dmnElementRef="_2B6C7EBB-FAD0-4D11-AAAD-5FAC99E5E0F9">
             <kie:width>50</kie:width>
             <kie:width>120</kie:width>
-            <kie:width>633</kie:width>
+            <kie:width>1022</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_6509565E-A34D-421D-B38F-88390EDB158C">
-            <kie:width>633</kie:width>
+            <kie:width>1022</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_C6ED535A-25EB-4174-96CD-145F238A4B54">
-            <kie:width>633</kie:width>
+            <kie:width>1022</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
